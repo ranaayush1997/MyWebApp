@@ -1,0 +1,143 @@
+##
+STEP 1
+
+Lab instructions
+0 of 4 completed
+
+
+​
+You’ll create a new .NET web application and configure GitHub integration in Visual Studio Code.
+
+Instructions
+1. Install Required Tools
+Before starting, ensure you have the necessary tools installed:
+
+Visual Studio Code (
+Download here
+)
+
+.NET SDK (
+Download here
+)
+
+Git (
+Download here
+)
+
+GitHub CLI (Optional, but recommended) (
+Download here
+)
+
+To confirm Git and .NET are installed, run:
+
+
+1 git --version
+2 dotnet --version
+
+2. Set Up GitHub Command-line Interface (CLI)
+If you haven't already configured GitHub CLI:
+
+You'll use the GitHub CLI (gh) to connect to your GitHub account from the terminal. This method gives you more flexibility and works outside of VS Code as well.
+
+Instructions
+Make sure the GitHub CLI is installed. If it isn’t, download it from the GitHub CLI website.
+
+Open a terminal in VS Code (use `Ctrl + `` to open it).
+
+Run the following command to log in: gh auth login
+
+When prompted:
+
+Select GitHub.com.
+
+Choose HTTPS as the preferred protocol.
+
+Authenticate using your web browser when prompted. The CLI will open a browser window and ask for a verification code.
+
+Once authenticated, the CLI will confirm you're logged in.
+
+
+3. Create a New .NET Web Application
+Open a new VS Code terminal (Ctrl+`).
+
+Create a new .NET web app: dotnet new web -n MyWebApp
+This will generate a basic ASP.NET Core web app inside a folder named MyWebApp.
+
+Navigate into your new project folder: cd MyWebApp
+
+Run the application locally to ensure it works: dotnet run 
+
+The app should start on 
+http://localhost:5000
+ 
+
+Press Ctrl+C to stop the server
+
+4. Initialize a GitHub Repository
+Run git config --global init.defaultBranch main to make main the default branch for all new repositories
+
+Initialize Git inside the project: git init
+
+Create a .gitignore file to exclude unnecessary files: dotnet new gitignore
+
+Add and commit the project files:
+git add .
+
+git commit -m "Initial commit - .NET web app"
+
+Create a GitHub repository:
+
+(GitHub CLI - Recommended): gh repo create MyWebApp --public --source=. --push
+
+
+
+STEP 2
+
+You’ll create a GitHub Actions workflow file to automate the build and test process.
+
+Instructions
+In VS Code, create a directory for GitHub Actions: mkdir -p .github/workflows
+
+Create a workflow file named ci.yml inside .github/workflows/
+
+Define the workflow with the following steps:
+
+Trigger on push events to the main branch
+
+Use an Ubuntu runner
+
+Set up .NET SDK
+
+Restore dependencies
+
+Build and test the application
+
+STEP 3
+
+Instructions
+Add the new workflow file to Git:
+git add .
+
+git commit -m "Add GitHub Actions CI workflow"
+
+Push your changes to GitHub: git push origin main
+
+Go to your GitHub repository and click on the "Actions" tab
+
+Verify that the workflow runs automatically
+
+STEP 4
+
+Instructions
+Go to GitHub → Your Repository → Actions → Your Workflow Run.
+
+Click on the workflow execution to inspect logs.
+
+If errors occur:
+
+Click on the failed step to check the error message.
+
+Modify ci.yml or your code as needed.
+
+Push a new commit to retry the workflow.
+##
